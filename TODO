@@ -1,0 +1,9 @@
+== TODO ==
+* Perform the validation in client.rs
+** Create the request query params
+** Ask each server
+** Parse the response
+** Return if at least one returned without a replay
+* Set user agent for the http client
+* Add readme file
+* Add tests for all methods

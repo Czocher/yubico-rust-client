@@ -1,0 +1,9 @@
+[package]
+name = "yubico_otp"
+version = "0.1.0"
+authors = ["Paweł Czochański <czochanski@gmail.com>"]
+
+[dependencies]
+time = "0.1"
+uuid = { version = "0.2", features = ["v4"] }
+hyper = "0.9.10"
