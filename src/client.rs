@@ -10,13 +10,11 @@ use response::Response;
 pub type ClientId = u32;
 pub type ClientKey = String;
 
-static WSAPI_URLS: &'static [&'static str] = &[
-    "https://api.yubico.com/wsapi/2.0/verify",
-    "https://api2.yubico.com/wsapi/2.0/verify",
-    "https://api3.yubico.com/wsapi/2.0/verify",
-    "https://api4.yubico.com/wsapi/2.0/verify",
-    "https://api5.yubico.com/wsapi/2.0/verify"
-];
+static WSAPI_URLS: &'static [&'static str] = &["https://api.yubico.com/wsapi/2.0/verify",
+                                               "https://api2.yubico.com/wsapi/2.0/verify",
+                                               "https://api3.yubico.com/wsapi/2.0/verify",
+                                               "https://api4.yubico.com/wsapi/2.0/verify",
+                                               "https://api5.yubico.com/wsapi/2.0/verify"];
 
 pub struct Client {
     client_id: ClientId,
@@ -24,17 +22,17 @@ pub struct Client {
 }
 
 impl Client {
-
     pub fn new(client_id: ClientId, client_key: ClientKey) -> Client {
-        Client{client_id: client_id, client_key: client_key}
+        Client {
+            client_id: client_id,
+            client_key: client_key,
+        }
     }
 
     pub fn verify(&self, request: Request) -> Result<(), &'static str> {
         try!(request.otp.is_valid());
         let query_str = self.prepare_query_string(&request);
         let result = self.query_webservices(&request);
-
-
 
         Ok(())
     }
@@ -61,8 +59,12 @@ impl Client {
             });
             threads.push(thread);
         }
+
+        for res in threads {
+            println!("{:?}", res.join().unwrap());
+        }
+
         // TODO: Iterate over threads and gather the responses
         Ok(())
     }
 }
-

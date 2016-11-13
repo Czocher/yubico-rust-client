@@ -1,13 +1,14 @@
-extern crate yubico_otp;
+extern crate yubico_rust_client;
 
 #[cfg(test)]
 mod request {
-    use yubico_otp::request::Request;
-    use yubico_otp::otp::Otp;
+    use yubico_rust_client::request::Request;
+    use yubico_rust_client::otp::Otp;
 
     #[test]
     fn create() {
-        Request::new(Otp::new(String::from("bla")));
+       // Request::new(Otp::new(String::from("bla")));
     }
+
 
 }

@@ -1,8 +1,8 @@
-extern crate yubico_otp;
+extern crate yubico_rust_client;
 
 #[cfg(test)]
 mod otp {
-    use yubico_otp::otp::Otp;
+    use yubico_rust_client::otp::Otp;
 
     #[test]
     fn length_too_short() {

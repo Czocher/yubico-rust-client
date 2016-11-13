@@ -7,7 +7,7 @@ pub type Nonce = String;
 
 pub enum Syncing {
     FAST,
-    SECURE
+    SECURE,
 }
 
 pub struct Request {
@@ -21,13 +21,13 @@ pub struct Request {
 
 impl Request {
     pub fn new(otp: Otp) -> Request {
-        Request{
+        Request {
             nonce: Uuid::new_v4().simple().to_string(),
             otp: otp,
             sl: None,
             timeout: None,
             timestamp: true,
-            h: None
+            h: None,
         }
     }
 }

@@ -1,10 +1,10 @@
 pub struct Otp {
-    otp: String
+    otp: String,
 }
 
 impl Otp {
-    pub fn new(string : String) -> Otp {
-        Otp{otp: string, }
+    pub fn new(string: String) -> Otp {
+        Otp { otp: string }
     }
 
     pub fn is_valid(&self) -> Result<(), &'static str> {
